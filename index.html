@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijaylaxmi Sahoo | Atmospheric Scientist & Oceanographer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#f8fafc',
+                        surface: '#ffffff',
+                        gisGreen: '#059669',
+                        gisBlue: '#0284c7',
+                        gisOrange: '#d97706',
+                        gisPink: '#db2777',
+                        gisPurple: '#7c3aed',
+                        textMain: '#1e293b',
+                        textMuted: '#475569',
+                    },
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.5s ease-out forwards',
+                        'scaleIn': 'scaleIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.7));
+            z-index: -1;
+        }
+
+        .hover-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .text-gradient-main {
+            background: linear-gradient(to right, #0284c7, #059669, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-view { display: none; }
+        .page-view.active { display: block; animation: fadeIn 0.5s ease-out forwards; }
+
+        /* Mobile Menu Transitions */
+        #mobile-menu {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 450px;
+            opacity: 1;
+        }
+
+        /* Modal Styles */
+        #project-modal {
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        #project-modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #project-modal-content {
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        #project-modal.open #project-modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="text-textMain font-sans overflow-x-hidden relative selection:bg-gisBlue selection:text-white min-h-screen flex flex-col">
+
+    <div class="bg-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+        <div class="glass-nav rounded-2xl px-4 py-3 md:px-6 md:py-4 flex justify-between items-center relative z-50">
+            <a href="#" onclick="navigateTo('home')" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-tr from-gisBlue to-gisGreen flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:rotate-12 transition-transform">
+                    B
+                </div>
+                <span class="font-display font-bold text-lg md:text-xl tracking-tight text-textMain group-hover:text-gisBlue transition-colors uppercase">Bijaylaxmi Sahoo</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex gap-1 text-sm font-medium text-textMuted bg-gray-100/50 p-1 rounded-xl border border-white/40">
+                <button onclick="navigateTo('about')" class="nav-item px-4 py-2 rounded-lg hover:bg-white hover:text-gisBlue hover:shadow-sm transition-all">About</button>
+                <button onclick="navigateTo('work')" class="nav-item px-4 py-2 rounded-lg hover:bg-white hover:text-gisGreen hover:shadow-sm transition-all">Experience</button>
+                <button onclick="navigateTo('projects')" class="nav-item px-4 py-2 rounded-lg hover:bg-white hover:text-gisOrange hover:shadow-sm transition-all">Projects</button>
+                <button onclick="navigateTo('publications')" class="nav-item px-4 py-2 rounded-lg hover:bg-white hover:text-gisPink hover:shadow-sm transition-all">Research</button>
+                <button onclick="navigateTo('photography')" class="nav-item px-4 py-2 rounded-lg hover:bg-white hover:text-gisPurple hover:shadow-sm transition-all">Photography</button>
+            </div>
+
+            <div class="hidden md:block">
+                <button onclick="navigateTo('contact')" class="bg-gradient-to-r from-gisBlue to-gisGreen text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    Contact
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-textMain p-2" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="glass-nav rounded-2xl mt-2 p-4 flex flex-col gap-2 text-sm font-medium text-textMuted md:hidden relative z-40 shadow-xl border-t border-gray-100">
+             <button onclick="navigateTo('about')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-gray-50 hover:text-gisBlue">About Me</button>
+             <button onclick="navigateTo('work')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-gray-50 hover:text-gisGreen">Experience</button>
+             <button onclick="navigateTo('projects')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-gray-50 hover:text-gisOrange">Projects</button>
+             <button onclick="navigateTo('publications')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-gray-50 hover:text-gisPink">Research & Conf.</button>
+             <button onclick="navigateTo('photography')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-gray-50 hover:text-gisPurple">Photography</button>
+             <button onclick="navigateTo('contact')" class="w-full text-left px-4 py-3 rounded-xl bg-gisBlue/10 text-gisBlue font-bold mt-2">Contact</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 flex-grow">
+
+        <!-- ================= HOME PAGE ================= -->
+        <div id="home" class="page-view active">
+            <header class="text-center mb-16 mt-8 min-h-[50vh] flex flex-col justify-center items-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gisBlue/30 bg-white/60 backdrop-blur-sm text-sm font-bold text-gisBlue mb-6 animate-float shadow-sm">
+                    <i data-lucide="globe-2" class="w-4 h-4"></i>
+                    Atmospheric Sciences & Oceanography
+                </div>
+                
+                <h1 class="font-display text-4xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-textMain">
+                    Decoding Data from <br />
+                    <span class="text-gradient-main">Sky to Sea.</span>
+                </h1>
+                
+                <p class="text-textMuted text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10 font-medium">
+                    I am <span class="text-textMain font-bold">Bijaylaxmi Sahoo</span>, a dual-master's holder in Atmospheric Sciences and Oceanography. I leverage Remote Sensing, GIS, and Numerical Modeling to analyze environmental dynamics.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 w-full justify-center px-4">
+                    <button onclick="navigateTo('projects')" class="px-8 py-4 bg-gisBlue text-white rounded-xl font-bold hover:bg-sky-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 w-full sm:w-auto">
+                        <i data-lucide="layers"></i> View Projects
+                    </button>
+                    <!-- Download CV Button - Pointing to a dummy path as per request structure -->
+                    <a href="Curriculum Vitae Bijaylaxmi Sahoo_Dec2025.pdf" class="px-8 py-4 bg-white text-textMain border border-gray-200 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto">
+                        <i data-lucide="download"></i> Download CV
+                    </a>
+                </div>
+            </header>
+
+            <!-- Dashboard Stats -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-gisGreen hover-card relative overflow-hidden group">
+                    <!-- Increased opacity from 10 to 25, hover 20 to 40 -->
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-25 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-40">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-textMuted text-xs font-bold uppercase tracking-wider">Experience</span>
+                            <div class="p-2 bg-gisGreen/10 rounded-lg"><i data-lucide="clock" class="text-gisGreen w-5 h-5"></i></div>
+                        </div>
+                        <span class="font-display text-3xl font-bold text-textMain">5+</span>
+                        <span class="text-sm text-textMuted ml-1 font-medium">Years in RS/GIS</span>
+                    </div>
+                </div>
+                
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-gisBlue hover-card relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-25 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-40">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-textMuted text-xs font-bold uppercase tracking-wider">Education</span>
+                            <div class="p-2 bg-gisBlue/10 rounded-lg"><i data-lucide="graduation-cap" class="text-gisBlue w-5 h-5"></i></div>
+                        </div>
+                        <span class="font-display text-3xl font-bold text-textMain">2</span>
+                        <span class="text-sm text-textMuted ml-1 font-medium">Master's Degrees</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-gisOrange hover-card relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-25 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-40">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-textMuted text-xs font-bold uppercase tracking-wider">Tools</span>
+                            <div class="p-2 bg-gisOrange/10 rounded-lg"><i data-lucide="code" class="text-gisOrange w-5 h-5"></i></div>
+                        </div>
+                        <span class="font-display text-3xl font-bold text-textMain">6+</span>
+                        <span class="text-sm text-textMuted ml-1 font-medium">Software/Models</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-gisPink hover-card relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-25 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-40">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-textMuted text-xs font-bold uppercase tracking-wider">Focus</span>
+                            <div class="p-2 bg-gisPink/10 rounded-lg"><i data-lucide="activity" class="text-gisPink w-5 h-5"></i></div>
+                        </div>
+                        <span class="font-display text-xl font-bold text-textMain mt-1">Modeling</span>
+                        <span class="text-xs text-textMuted font-medium block">Numerical & Data</span>
+                    </div>
+                </div>
+
+                <!-- New Box: UAV Handling -->
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-gisPurple hover-card relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-25 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-40">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-textMuted text-xs font-bold uppercase tracking-wider">UAV Handling</span>
+                            <div class="p-2 bg-gisPurple/10 rounded-lg"><i data-lucide="plane" class="text-gisPurple w-5 h-5"></i></div>
+                        </div>
+                        <span class="font-display text-3xl font-bold text-textMain">3+</span>
+                        <span class="text-sm text-textMuted ml-1 font-medium">Drone Platforms</span>
+                    </div>
+                </div>
+
+                <!-- New Box: Scientific Vessel -->
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-gisBlue hover-card relative overflow-hidden group">
+                    <!-- Increased opacity here too -->
+                    <img src="driving-a-boat-nathan-drake.gif"  class="absolute inset-0 w-full h-full object-cover opacity-25 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-40">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-textMuted text-xs font-bold uppercase tracking-wider">Vessel Ops</span>
+                            <div class="p-2 bg-gisBlue/10 rounded-lg"><i data-lucide="anchor" class="text-gisBlue w-5 h-5"></i></div>
+                        </div>
+                        <span class="font-display text-3xl font-bold text-textMain">7+</span>
+                        <span class="text-sm text-textMuted ml-1 font-medium">Hours Captaining</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= ABOUT PAGE ================= -->
+        <div id="about" class="page-view">
+            <h2 class="font-display text-4xl md:text-6xl font-bold mb-12 text-center text-textMain">About <span class="text-gisGreen">Bijaylaxmi</span></h2>
+            
+            <div class="space-y-8">
+                <!-- 1. Full Width Main Bio -->
+                <div class="glass-panel rounded-3xl p-8 md:p-12 shadow-sm border-t-4 border-gisBlue">
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <div class="w-48 h-48 rounded-full p-1 bg-gradient-to-tr from-gisBlue via-gisGreen to-gisPurple shadow-xl flex-shrink-0">
+                            <img src="gama_prof.jpeg" class="w-full h-full object-cover rounded-full border-4 border-white" alt="Bijaylaxmi Sahoo">
+                        </div>
+                        <div class="text-center md:text-left">
+                            <h3 class="font-display text-4xl font-bold text-textMain mb-2">Bijaylaxmi Sahoo</h3>
+                            <div class="flex flex-wrap gap-3 justify-center md:justify-start mb-6">
+                                <span class="px-3 py-1 rounded-full bg-gisBlue/10 text-gisBlue font-bold text-sm"><i data-lucide="map-pin" class="w-3 h-3 inline mr-1"></i> Baton Rouge, LA</span>
+                                <span class="px-3 py-1 rounded-full bg-gisGreen/10 text-gisGreen font-bold text-sm"><i data-lucide="globe" class="w-3 h-3 inline mr-1"></i> Open to Relocation</span>
+                            </div>
+                            <div class="space-y-4 text-lg text-textMain leading-relaxed font-medium max-w-3xl">
+                                <p>
+                                    I hold dual master's degrees in <strong>Atmospheric Sciences</strong> and <strong>Oceanography</strong>, complemented by a bachelor's in Mathematics. With over 5 years of experience, I specialize in <span class="text-gisGreen">Remote Sensing (RS)</span> and <span class="text-gisOrange">Geographic Information Systems (GIS)</span>.
+                                </p>
+                                <p>
+                                    My expertise lies in large data handling, numerical modeling, and programming in MATLAB and Python. I am an enthusiastic learner, capable of adapting to new areas of knowledge, and I possess strong oral and written communication skills.
+                                </p>
+                                <p>
+                                    Beyond research, I am a skilled drone operator and scientific vessel captain. I enjoy learning about history, geography, and new languages.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Education Section (Figure Left) -->
+                <div class="glass-panel rounded-3xl overflow-hidden hover-card border-l-4 border-gisBlue">
+                    <div class="grid grid-cols-1 md:grid-cols-12">
+                        <!-- Image Left -->
+                        <div class="md:col-span-4 h-64 md:h-auto relative">
+                             <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" alt="University Campus">
+                             <div class="absolute inset-0 bg-gisBlue/20"></div>
+                             <div class="absolute bottom-4 left-4">
+                                 <span class="bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-gisBlue font-bold text-sm shadow-sm">Academic Journey</span>
+                             </div>
+                        </div>
+                        <!-- Content Right -->
+                        <div class="md:col-span-8 p-8 flex flex-col justify-center">
+                            <h4 class="font-display text-2xl font-bold mb-6 text-textMain flex items-center gap-2">
+                                <i data-lucide="graduation-cap" class="w-6 h-6 text-gisBlue"></i> Education
+                            </h4>
+                            <div class="space-y-6">
+                                <div class="relative pl-6 border-l-2 border-gisBlue">
+                                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-gisBlue"></div>
+                                    <div class="text-textMain font-bold text-lg">M.S. Oceanography</div>
+                                    <div class="text-textMuted">Louisiana State University (2023)</div>
+                                </div>
+                                <div class="relative pl-6 border-l-2 border-gisGreen">
+                                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-gisGreen"></div>
+                                    <div class="text-textMain font-bold text-lg">M.S. Atmospheric Sciences</div>
+                                    <div class="text-textMuted">NIT Rourkela, India (2018)</div>
+                                </div>
+                                <div class="relative pl-6 border-l-2 border-gisOrange">
+                                    <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-gisOrange"></div>
+                                    <div class="text-textMain font-bold text-lg">B.Sc. Mathematics</div>
+                                    <div class="text-textMuted">Utkal University, India (2016)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Field Expertise Section (Figure Left) -->
+                <div class="glass-panel rounded-3xl overflow-hidden hover-card border-l-4 border-gisOrange">
+                    <div class="grid grid-cols-1 md:grid-cols-12">
+                        <!-- Image Left -->
+                        <div class="md:col-span-4 h-64 md:h-auto relative group">
+                             <img src="https://images.unsplash.com/photo-1569263979104-565b63418962?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Field Work">
+                             <div class="absolute inset-0 bg-gisOrange/10"></div>
+                             <div class="absolute bottom-4 left-4">
+                                 <span class="bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-gisOrange font-bold text-sm shadow-sm">Field Ops</span>
+                             </div>
+                        </div>
+                        <!-- Content Right -->
+                        <div class="md:col-span-8 p-8 flex flex-col justify-center">
+                            <h4 class="font-display text-2xl font-bold mb-6 text-textMain flex items-center gap-2">
+                                <i data-lucide="compass" class="w-6 h-6 text-gisOrange"></i> Field Expertise
+                            </h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="bg-white/50 p-4 rounded-xl border border-white/60">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i data-lucide="plane" class="text-gisOrange w-5 h-5"></i>
+                                        <span class="font-bold text-textMain">UAV / Drone Handling</span>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 bg-white text-textMuted rounded border border-gray-200 text-xs font-bold">DJI M600 Pro</span>
+                                        <span class="px-2 py-1 bg-white text-textMuted rounded border border-gray-200 text-xs font-bold">DJI M300</span>
+                                        <span class="px-2 py-1 bg-white text-textMuted rounded border border-gray-200 text-xs font-bold">Phantom 4</span>
+                                    </div>
+                                </div>
+                                <div class="bg-white/50 p-4 rounded-xl border border-white/60">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i data-lucide="anchor" class="text-gisBlue w-5 h-5"></i>
+                                        <span class="font-bold text-textMain">Vessel Operations</span>
+                                    </div>
+                                    <p class="text-sm text-textMuted font-medium">Scientific Vessel Driving</p>
+                                    <div class="mt-2 text-xs font-mono bg-gisBlue/10 text-gisBlue px-2 py-1 rounded inline-block">7+ Hours Captaining</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Technical Skills Section (Figure Left) -->
+                <div class="glass-panel rounded-3xl overflow-hidden hover-card border-l-4 border-gisPurple">
+                    <div class="grid grid-cols-1 md:grid-cols-12">
+                        <!-- Image Left -->
+                        <div class="md:col-span-4 h-64 md:h-auto relative">
+                             <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" alt="Coding">
+                             <div class="absolute inset-0 bg-gisPurple/20"></div>
+                             <div class="absolute bottom-4 left-4">
+                                 <span class="bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-gisPurple font-bold text-sm shadow-sm">Tech Stack</span>
+                             </div>
+                        </div>
+                        <!-- Content Right -->
+                        <div class="md:col-span-8 p-8 flex flex-col justify-center">
+                            <h4 class="font-display text-2xl font-bold mb-6 text-textMain flex items-center gap-2">
+                                <i data-lucide="wrench" class="w-6 h-6 text-gisPurple"></i> Technical Skills
+                            </h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="text-sm font-bold text-textMuted uppercase tracking-wider mb-2">Programming & Modeling</h5>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-white text-gisPurple rounded-lg text-sm font-bold border border-gisPurple/20 shadow-sm">MATLAB</span>
+                                        <span class="px-3 py-1 bg-white text-gisBlue rounded-lg text-sm font-bold border border-gisBlue/20 shadow-sm">Python</span>
+                                        <span class="px-3 py-1 bg-white text-textMain rounded-lg text-sm font-bold border border-gray-200 shadow-sm">WRF Model</span>
+                                        <span class="px-3 py-1 bg-white text-textMain rounded-lg text-sm font-bold border border-gray-200 shadow-sm">C/C++</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-bold text-textMuted uppercase tracking-wider mb-2">Geospatial Software</h5>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-white text-gisGreen rounded-lg text-sm font-bold border border-gisGreen/20 shadow-sm">ArcGIS Pro</span>
+                                        <span class="px-3 py-1 bg-white text-gisOrange rounded-lg text-sm font-bold border border-gisOrange/20 shadow-sm">QGIS</span>
+                                        <span class="px-3 py-1 bg-white text-textMain rounded-lg text-sm font-bold border border-gray-200 shadow-sm">Agisoft Metashape</span>
+                                        <span class="px-3 py-1 bg-white text-textMain rounded-lg text-sm font-bold border border-gray-200 shadow-sm">ERDAS Imagine</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Awards Section (Figure Left - Bonus) -->
+                <div class="glass-panel rounded-3xl overflow-hidden hover-card border-l-4 border-gisGreen">
+                    <div class="grid grid-cols-1 md:grid-cols-12">
+                        <!-- Image Left -->
+                        <div class="md:col-span-4 h-64 md:h-auto relative">
+                             <img src="https://images.unsplash.com/photo-1565514020176-db793d9735d5?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover" alt="Awards">
+                             <div class="absolute inset-0 bg-gisGreen/20"></div>
+                             <div class="absolute bottom-4 left-4">
+                                 <span class="bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-gisGreen font-bold text-sm shadow-sm">Recognition</span>
+                             </div>
+                        </div>
+                        <!-- Content Right -->
+                        <div class="md:col-span-8 p-8 flex flex-col justify-center">
+                            <h4 class="font-display text-2xl font-bold mb-6 text-textMain flex items-center gap-2">
+                                <i data-lucide="trophy" class="w-6 h-6 text-gisGreen"></i> Honors & Awards
+                            </h4>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 p-1 bg-gisGreen/10 rounded-full"><i data-lucide="star" class="w-4 h-4 text-gisGreen"></i></div>
+                                    <div>
+                                        <div class="text-textMain font-bold">1st Place Student Poster</div>
+                                        <div class="text-sm text-textMuted">37th Annual LA Remote Sensing & GIS Workshop (2025)</div>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 p-1 bg-gisGreen/10 rounded-full"><i data-lucide="star" class="w-4 h-4 text-gisGreen"></i></div>
+                                    <div>
+                                        <div class="text-textMain font-bold">Haag Conference Presentation Award</div>
+                                        <div class="text-sm text-textMuted">Dept. of Geography & Anthropology, LSU (2024)</div>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="mt-1 p-1 bg-gisGreen/10 rounded-full"><i data-lucide="star" class="w-4 h-4 text-gisGreen"></i></div>
+                                    <div>
+                                        <div class="text-textMain font-bold">NASA Workshop Selection</div>
+                                        <div class="text-sm text-textMuted">Ocean Color Remote Sensing (2021)</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Memberships & Activities (New Row) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Professional Memberships -->
+                    <div class="glass-panel p-8 rounded-3xl hover-card border-t-4 border-gisBlue">
+                        <h4 class="font-display text-xl font-bold mb-6 text-textMain flex items-center gap-2">
+                            <i data-lucide="users" class="w-5 h-5 text-gisBlue"></i> Professional Memberships
+                        </h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gisBlue shrink-0"></div>
+                                <span class="text-textMuted text-sm font-medium">Coastal and Estuarine Research Federation (Since 2023)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gisBlue shrink-0"></div>
+                                <span class="text-textMuted text-sm font-medium">American Association of Geographers (Since 2023)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gisBlue shrink-0"></div>
+                                <span class="text-textMuted text-sm font-medium">American Geophysical Union (2024)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-gisBlue shrink-0"></div>
+                                <span class="text-textMuted text-sm font-medium">International Geographical Honors Society - Gamma Theta Upsilon (Since 2025)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Activities -->
+                    <div class="glass-panel p-8 rounded-3xl hover-card border-t-4 border-gisPink">
+                        <h4 class="font-display text-xl font-bold mb-6 text-textMain flex items-center gap-2">
+                            <i data-lucide="heart-handshake" class="w-5 h-5 text-gisPink"></i> Activities
+                        </h4>
+                        <ul class="space-y-4">
+                            <li class="relative pl-4 border-l-2 border-gisPink/30">
+                                <div class="text-textMain font-bold text-sm">Officer</div>
+                                <div class="text-sm text-textMuted">Indian Student Association, LSU (2022-2023)</div>
+                            </li>
+                            <li class="relative pl-4 border-l-2 border-gisPink/30">
+                                <div class="text-textMain font-bold text-sm">Volunteer</div>
+                                <div class="text-sm text-textMuted">State Rally Day 2022, 2023, 2024 (LSU)</div>
+                            </li>
+                            <li class="relative pl-4 border-l-2 border-gisPink/30">
+                                <div class="text-textMain font-bold text-sm">Volunteer</div>
+                                <div class="text-sm text-textMuted">Athletics and Cultural Events, Ramadevi Women's Autonomous College</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- ================= EXPERIENCE PAGE ================= -->
+        <div id="work" class="page-view">
+            <h2 class="font-display text-4xl md:text-6xl font-bold mb-12 text-center text-textMain">Professional <span class="text-gradient-main">Experience</span></h2>
+
+            <div class="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
+                
+                <!-- NEW: Intern 2025 -->
+                <div class="glass-panel rounded-3xl p-8 hover-card border-l-4 border-gisGreen">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-textMain">Intern</h3>
+                            <p class="text-gisGreen font-bold">Coastal Ecosystem Design Studio, LSU</p>
+                        </div>
+                        <span class="text-sm font-mono text-textMain bg-white/50 px-3 py-1 rounded-full mt-2 md:mt-0 shadow-sm border border-gray-100">Jun 2025 – Jul 2025</span>
+                    </div>
+                    <p class="text-textMuted font-medium">
+                        Engaged in coastal ecosystem design and analysis projects. Focused on integrating ecological principles with design strategies for coastal resilience.
+                    </p>
+                </div>
+
+                <!-- UPDATED: Research Assistant LSU -->
+                <div class="glass-panel rounded-3xl p-8 hover-card border-l-4 border-gisBlue">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-textMain">Research Assistant</h3>
+                            <p class="text-gisBlue font-bold">Louisiana State University</p>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-sm font-mono text-textMain bg-white/50 px-3 py-1 rounded-full mb-1 shadow-sm border border-gray-100">May 2023 – Present</span>
+                            <span class="text-xs text-textMuted">Dept. of Geography & Anthropology</span>
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-textMuted font-medium">
+                        <li>Currently working as a Research Assistant in the Department of Geography and Anthropology.</li>
+                        <li>Previously held a NASA Graduate Student Research Assistantship (Jan 2021 – May 2023) in the Dept. of Oceanography & Coastal Sciences.</li>
+                        <li>Conducted extensive remote sensing analysis and numerical modeling for coastal wetland health.</li>
+                    </ul>
+                </div>
+
+                <!-- TA Experience -->
+                <div class="glass-panel rounded-3xl p-8 hover-card border-l-4 border-gisPurple">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-textMain">Teaching Assistant</h3>
+                            <p class="text-gisPurple font-bold">Louisiana State University</p>
+                        </div>
+                        <span class="text-sm font-mono text-textMain bg-white/50 px-3 py-1 rounded-full mt-2 md:mt-0 shadow-sm border border-gray-100">2021 – 2025</span>
+                    </div>
+                    <p class="text-textMuted font-medium mb-2">Departments of Geography & Anthropology / Oceanography & Coastal Sciences.</p>
+                    <ul class="list-disc list-inside space-y-1 text-textMuted text-sm">
+                        <li>Aerial Photo Interpretation and Image Processing (Spring 2025)</li>
+                        <li>GIS and Environmental Remote Sensing (Fall 2024 - 2025)</li>
+                        <li>Introduction to Oceanography (Spring 2023)</li>
+                    </ul>
+                </div>
+
+                <!-- JRF IIT -->
+                <div class="glass-panel rounded-3xl p-8 hover-card border-l-4 border-gisOrange">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-textMain">Junior Research Fellow</h3>
+                            <p class="text-gisOrange font-bold">Indian Institute of Technology (IIT) Bhubaneswar</p>
+                        </div>
+                        <span class="text-sm font-mono text-textMain bg-white/50 px-3 py-1 rounded-full mt-2 md:mt-0 shadow-sm border border-gray-100">Dec 2019 – Nov 2020</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-textMuted font-medium">
+                        <li>Developed Long-Term High-Resolution Land Use Land Cover (LULC) for Bhubaneswar Peri-Urban areas.</li>
+                        <li>Analyzed COVID-19 outbreak in India using SEIR models.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-panel rounded-3xl p-8 hover-card border-l-4 border-gisPink">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-display text-2xl font-bold text-textMain">Research Intern</h3>
+                            <p class="text-gisPink font-bold">IIT Bhubaneswar & IIT Kharagpur</p>
+                        </div>
+                        <span class="text-sm font-mono text-textMuted bg-white/50 px-3 py-1 rounded-full mt-2 md:mt-0">Summers 2017 & 2019</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-textMuted font-medium">
+                        <li><strong>IIT BBS (2019):</strong> LULC analysis of Bhubaneswar pre/post Cyclone Fani using RS/GIS.</li>
+                        <li><strong>IIT KGP (2017):</strong> Application of Artificial Neural Networks (ANN) in filling missing wave data gaps.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PROJECTS PAGE ================= -->
+        <div id="projects" class="page-view">
+            <h2 class="font-display text-4xl md:text-6xl font-bold mb-12 text-center text-textMain">Key <span class="text-gisOrange">Projects</span></h2>
+            
+            <!-- Highlighted Project -->
+            <div class="max-w-6xl mx-auto mb-12">
+                <div class="glass-panel rounded-3xl overflow-hidden border-t-4 border-gisBlue hover-card group relative cursor-pointer" onclick="showProjectDetails('tss')">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="h-64 lg:h-auto overflow-hidden relative">
+                             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Ocean Satellite Data">
+                             <div class="absolute top-4 left-4 bg-gisBlue text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-md">
+                                Featured Project
+                             </div>
+                        </div>
+                        <div class="p-8 lg:p-12 flex flex-col justify-center">
+                            <h3 class="font-display text-3xl font-bold text-textMain mb-4">20-Year Assessment of TSS Variability</h3>
+                            <p class="text-textMuted text-lg mb-6 leading-relaxed">
+                                A comprehensive study analyzing the spatiotemporal variability of Total Suspended Sediment (TSS) in Barataria Bay, USA, from 2000 to 2020 using MODIS Aqua satellite data.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-gisBlue/10 text-gisBlue rounded-lg text-sm font-bold">Ocean Color</span>
+                                <span class="px-3 py-1 bg-gisBlue/10 text-gisBlue rounded-lg text-sm font-bold">Remote Sensing</span>
+                                <span class="px-3 py-1 bg-gisBlue/10 text-gisBlue rounded-lg text-sm font-bold">Python/MATLAB</span>
+                            </div>
+                            <button class="inline-flex items-center gap-2 text-gisBlue font-bold hover:text-gisBlue/80 transition-colors group-hover:translate-x-1 duration-300 w-fit">
+                                View Full Details <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Project 2: LULC -->
+                <div class="glass-panel rounded-2xl overflow-hidden border-t-4 border-gisGreen hover-card flex flex-col cursor-pointer" onclick="showProjectDetails('lulc')">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Urban Map">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-display text-xl font-bold text-textMain mb-2">High-Res LULC Mapping</h4>
+                        <p class="text-textMuted text-sm mb-4 flex-grow">
+                            Developed a long-term (2000-2020) Land Use Land Cover dataset for Bhubaneswar. Used Landsat imagery to track rapid urbanization.
+                        </p>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-2">
+                                <span class="text-xs font-bold text-gisGreen bg-gisGreen/10 px-2 py-1 rounded">ArcGIS</span>
+                                <span class="text-xs font-bold text-gisGreen bg-gisGreen/10 px-2 py-1 rounded">Urban Planning</span>
+                            </div>
+                            <button class="text-sm font-bold text-gisGreen flex items-center gap-1 hover:gap-2 transition-all">
+                                View More <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: COVID -->
+                <div class="glass-panel rounded-2xl overflow-hidden border-t-4 border-gisPink hover-card flex flex-col cursor-pointer" onclick="showProjectDetails('covid')">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Data Graph">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-display text-xl font-bold text-textMain mb-2">COVID-19 SEIR Modeling</h4>
+                        <p class="text-textMuted text-sm mb-4 flex-grow">
+                            Implemented the SEIR mathematical model to simulate the COVID-19 outbreak in India and estimate the basic reproduction number ($R_0$).
+                        </p>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-2">
+                                <span class="text-xs font-bold text-gisPink bg-gisPink/10 px-2 py-1 rounded">MATLAB</span>
+                                <span class="text-xs font-bold text-gisPink bg-gisPink/10 px-2 py-1 rounded">Epidemiology</span>
+                            </div>
+                            <button class="text-sm font-bold text-gisPink flex items-center gap-1 hover:gap-2 transition-all">
+                                View More <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Neural Networks -->
+                <div class="glass-panel rounded-2xl overflow-hidden border-t-4 border-gisPurple hover-card flex flex-col cursor-pointer" onclick="showProjectDetails('ann')">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Neural Network">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-display text-xl font-bold text-textMain mb-2">Wave Data Gap Filling (ANN)</h4>
+                        <p class="text-textMuted text-sm mb-4 flex-grow">
+                            Applied Artificial Neural Networks to reconstruct missing time-series ocean wave data using historical buoy records.
+                        </p>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-2">
+                                <span class="text-xs font-bold text-gisPurple bg-gisPurple/10 px-2 py-1 rounded">AI/ML</span>
+                                <span class="text-xs font-bold text-gisPurple bg-gisPurple/10 px-2 py-1 rounded">Python</span>
+                            </div>
+                            <button class="text-sm font-bold text-gisPurple flex items-center gap-1 hover:gap-2 transition-all">
+                                View More <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Cyclone Fani -->
+                <div class="glass-panel rounded-2xl overflow-hidden border-t-4 border-gisOrange hover-card flex flex-col cursor-pointer" onclick="showProjectDetails('fani')">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Storm">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-display text-xl font-bold text-textMain mb-2">Cyclone Fani Impact Analysis</h4>
+                        <p class="text-textMuted text-sm mb-4 flex-grow">
+                            Quantified the ecological damage of Cyclone Fani in Odisha using NDVI difference analysis on Sentinel-2 satellite imagery.
+                        </p>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-2">
+                                <span class="text-xs font-bold text-gisOrange bg-gisOrange/10 px-2 py-1 rounded">NDVI</span>
+                                <span class="text-xs font-bold text-gisOrange bg-gisOrange/10 px-2 py-1 rounded">Disaster Mgmt</span>
+                            </div>
+                            <button class="text-sm font-bold text-gisOrange flex items-center gap-1 hover:gap-2 transition-all">
+                                View More <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Field Work -->
+                <div class="glass-panel rounded-2xl overflow-hidden border-t-4 border-gisBlue hover-card flex flex-col cursor-pointer" onclick="showProjectDetails('field')">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Field Instruments">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="font-display text-xl font-bold text-textMain mb-2">Met. Data Validation</h4>
+                        <p class="text-textMuted text-sm mb-4 flex-grow">
+                            Conducted field campaigns to validate satellite observations using ground-truth atmospheric data collected from meteorological stations.
+                        </p>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-2">
+                                <span class="text-xs font-bold text-gisBlue bg-gisBlue/10 px-2 py-1 rounded">Field Work</span>
+                                <span class="text-xs font-bold text-gisBlue bg-gisBlue/10 px-2 py-1 rounded">Validation</span>
+                            </div>
+                            <button class="text-sm font-bold text-gisBlue flex items-center gap-1 hover:gap-2 transition-all">
+                                View More <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= RESEARCH & PUBLICATIONS PAGE ================= -->
+        <div id="publications" class="page-view">
+            <h2 class="font-display text-3xl md:text-5xl font-bold mb-10 text-center text-textMain">Papers & <span class="text-gisPink">Conferences</span></h2>
+            
+            <div class="max-w-4xl mx-auto space-y-12">
+                <!-- 1. Book Review (Highlighted) -->
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-gisGreen via-gisBlue to-gisPurple opacity-30 rounded-2xl blur"></div>
+                    <div class="glass-panel p-8 rounded-2xl relative border-l-4 border-gisGreen">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gisGreen/10 text-gisGreen font-bold text-xs uppercase mb-4">
+                            <i data-lucide="book" class="w-3 h-3"></i> Book Review
+                        </span>
+                        <h4 class="text-xl font-bold text-textMain mb-2">Wetlands Ecology: Eco-Biological Uniqueness of a Ramsar Site</h4>
+                        <p class="text-textMuted text-sm italic mb-4">East Kolkata Wetlands, India</p>
+                        
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                            <p class="text-sm text-textMuted font-medium leading-relaxed">
+                                <strong>Sahoo, B. (2025).</strong> Review of <em>Wetlands Ecology: Eco-Biological Uniqueness of a Ramsar Site (East Kolkata Wetlands, India)</em> by Susanta Kumar Chakraborty, Poulomi Sanyal, and Ratnadeep Ray. Cham, Switzerland: Springer Nature Switzerland, 2023. xxii and 511 pp. <br/>
+                                <span class="text-xs text-textMuted mt-2 block">ISBN: 978-3-031-09252-7 (Paper/Cloth) | 978-3-031-09253-4 (Electronic)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2. Journal Papers -->
+                <div>
+                    <h3 class="text-xl font-bold text-textMuted uppercase tracking-wider mb-6 border-b border-gray-200 pb-2 flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5"></i> Journal Papers
+                    </h3>
+                    <div class="space-y-4">
+                         <div class="group glass-panel p-8 rounded-2xl hover:bg-white hover:shadow-lg transition-all cursor-pointer border-l-4 border-gisBlue">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-gisBlue font-mono text-xs font-bold mb-2 block uppercase tracking-wide">2023 • Master's Thesis (LSU)</span>
+                                    <h4 class="text-xl font-bold text-textMain group-hover:text-gisBlue transition-colors">20-year Assessment of Total Suspended Sediment (TSS) Variability</h4>
+                                    <p class="text-textMuted text-sm mt-3 max-w-2xl font-medium">
+                                        Studied TSS variability in Barataria Bay using MODIS ocean color data and adaptive semi-analytical/neural network algorithms.
+                                    </p>
+                                </div>
+                                <div class="p-2 rounded-full bg-gray-50 group-hover:bg-gisBlue/10 transition-colors">
+                                    <i data-lucide="book-open" class="text-textMuted group-hover:text-gisBlue w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group glass-panel p-8 rounded-2xl hover:bg-white hover:shadow-lg transition-all cursor-pointer border-l-4 border-gisPurple">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-gisPurple font-mono text-xs font-bold mb-2 block uppercase tracking-wide">2020 • arXiv preprint</span>
+                                    <h4 class="text-xl font-bold text-textMain group-hover:text-gisPurple transition-colors">Analysis of COVID19 Outbreak in India using SEIR model</h4>
+                                    <p class="text-textMuted text-sm mt-3 max-w-2xl font-medium">
+                                        Authors: Kishore, R., <strong>Sahoo, B.</strong>, Swain, D., & Sahu, K. K.
+                                    </p>
+                                </div>
+                                <div class="p-2 rounded-full bg-gray-50 group-hover:bg-gisPurple/10 transition-colors">
+                                    <i data-lucide="external-link" class="text-textMuted group-hover:text-gisPurple w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                </div>
+
+                
+
+                <!-- 3. Conferences -->
+                <div>
+                    <h3 class="text-xl font-bold text-textMuted uppercase tracking-wider mb-6 border-b border-gray-200 pb-2 flex items-center gap-2">
+                        <i data-lucide="mic-2" class="w-5 h-5"></i> Conferences & Workshops
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- NEW 2025 Entry -->
+                        <div class="glass-panel p-6 rounded-xl hover:bg-white transition-all border-l-4 border-gisPink">
+                            <span class="text-xs font-bold text-gisPink block mb-2">CERF 2025 (Richmond, VA)</span>
+                            <h4 class="font-bold text-textMain">Sinking Shores, Rising Solutions</h4>
+                            <p class="text-sm text-textMuted mt-1">Adaptive future of Port Fourchon. Co-authored with Jamal A., Lehmann B., et al.</p>
+                        </div>
+
+                        <!-- NEW 2025 Entry -->
+                        <div class="glass-panel p-6 rounded-xl hover:bg-white transition-all border-l-4 border-gisGreen">
+                            <span class="text-xs font-bold text-gisGreen block mb-2">CERF 2025 (Richmond, VA)</span>
+                            <h4 class="font-bold text-textMain">Satellite-Derived Phenology</h4>
+                            <p class="text-sm text-textMuted mt-1">Phragmites australis in Coastal Louisiana: Implications for Wetland Dieback.</p>
+                        </div>
+
+                        <!-- NEW 2025 Entry -->
+                        <div class="glass-panel p-6 rounded-xl hover:bg-white transition-all border-l-4 border-gisBlue">
+                            <span class="text-xs font-bold text-gisBlue block mb-2">AAG Annual Meeting 2025</span>
+                            <h4 class="font-bold text-textMain">Roseau Cane Health Monitoring</h4>
+                            <p class="text-sm text-textMuted mt-1">Using scale insect density field samples and diverse remote sensing data.</p>
+                        </div>
+                        
+                        <!-- NEW 2025 Entry -->
+                        <div class="glass-panel p-6 rounded-xl hover:bg-white transition-all border-l-4 border-gisOrange">
+                            <span class="text-xs font-bold text-gisOrange block mb-2">LA Remote Sensing Workshop 2025</span>
+                            <h4 class="font-bold text-textMain">Drone-Based Spectral Merging</h4>
+                            <p class="text-sm text-textMuted mt-1">Enhancing Roseau Cane Health Monitoring in Mississippi River Delta.</p>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl hover:bg-white transition-all border-l-4 border-gisBlue">
+                            <span class="text-xs font-bold text-gisBlue block mb-2">NASA Workshop 2021</span>
+                            <h4 class="font-bold text-textMain">Calibration & Validation of Ocean Color RS</h4>
+                            <p class="text-sm text-textMuted mt-1">Bowdoin College, Maine. Sponsored by NASA.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://www.researchgate.net/profile/Bijaylaxmi-Sahoo" target="_blank" class="inline-flex items-center gap-2 text-textMuted font-bold hover:text-gisBlue transition-colors border-b-2 border-transparent hover:border-gisBlue pb-1">
+                    View ResearchGate Profile <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ================= PHOTOGRAPHY PAGE ================= -->
+        <div id="photography" class="page-view">
+            <h2 class="font-display text-4xl md:text-6xl font-bold mb-6 text-center text-textMain">Captured <span class="text-gisPurple">Moments</span></h2>
+            <p class="text-center text-textMuted mb-12 max-w-2xl mx-auto">Beyond the data and maps, I explore the world through my lens. Capturing the beauty of the atmosphere and my journeys.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Cloud Photography -->
+                <div class="glass-panel p-4 rounded-3xl hover-card group cursor-pointer relative overflow-hidden h-80">
+                    <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Clouds">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white relative z-10">
+                        <h3 class="font-display text-2xl font-bold">Cloud Photography</h3>
+                        <p class="text-white/80 text-sm">Capturing the atmospheric dynamics.</p>
+                    </div>
+                </div>
+
+                <!-- Field Work Photo -->
+                <div class="glass-panel p-4 rounded-3xl hover-card group cursor-pointer relative overflow-hidden h-80">
+                    <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Field Work">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white relative z-10">
+                        <h3 class="font-display text-2xl font-bold">Field Work</h3>
+                        <p class="text-white/80 text-sm">Research in action on the ground.</p>
+                    </div>
+                </div>
+
+                <!-- Travel -->
+                <div class="glass-panel p-4 rounded-3xl hover-card group cursor-pointer relative overflow-hidden h-80">
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Travel">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white relative z-10">
+                        <h3 class="font-display text-2xl font-bold">Travel</h3>
+                        <p class="text-white/80 text-sm">Exploring new places and cultures.</p>
+                    </div>
+                </div>
+
+                <!-- Food -->
+                <div class="glass-panel p-4 rounded-3xl hover-card group cursor-pointer relative overflow-hidden h-80">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Food">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white relative z-10">
+                        <h3 class="font-display text-2xl font-bold">Food</h3>
+                        <p class="text-white/80 text-sm">Culinary adventures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CONTACT PAGE ================= -->
+        <div id="contact" class="page-view">
+            <section class="max-w-4xl mx-auto">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-center text-textMain">Let's <span class="text-gradient-main">Connect</span></h2>
+                <p class="text-textMuted mb-12 text-center max-w-xl mx-auto font-medium text-lg">
+                    Open to collaborations in Atmospheric Sciences, Oceanography, and RS/GIS.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <!-- Contact Info -->
+                    <div class="space-y-6">
+                        <a href="mailto:bsahoo1@lsu.edu" class="glass-panel p-6 rounded-2xl flex items-center gap-4 hover:bg-white transition-all group">
+                            <div class="p-3 bg-gisBlue/10 rounded-full group-hover:bg-gisBlue group-hover:text-white transition-colors">
+                                <i data-lucide="mail" class="w-6 h-6 text-gisBlue group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-textMain">LSU Email</h4>
+                                <p class="text-sm text-textMuted">bsahoo1@lsu.edu</p>
+                            </div>
+                        </a>
+
+                        <!-- Added Personal Email (Gmail) -->
+                        <a href="mailto:bijaylaxmi.gamma@gmail.com" class="glass-panel p-6 rounded-2xl flex items-center gap-4 hover:bg-white transition-all group">
+                            <div class="p-3 bg-gisPink/10 rounded-full group-hover:bg-gisPink group-hover:text-white transition-colors">
+                                <i data-lucide="mail" class="w-6 h-6 text-gisPink group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-textMain">Personal Email</h4>
+                                <p class="text-sm text-textMuted">bijaylaxmi.gamma@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <div class="glass-panel p-6 rounded-2xl flex items-center gap-4">
+                            <div class="p-3 bg-gisGreen/10 rounded-full">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-gisGreen"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-textMain">Location</h4>
+                                <p class="text-sm text-textMuted">Baton Rouge, LA 70803</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="glass-panel p-2 rounded-2xl h-full min-h-[300px] overflow-hidden shadow-lg">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3439.630073043236!2d-91.18967802369677!3d30.41372330353153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8626a71e62660275%3A0x6b2675971578e072!2s3928%20Gourrier%20Ave%2C%20Baton%20Rouge%2C%20LA%2070808!5e0!3m2!1sen!2sus!4v1709251234567!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; border-radius: 12px; height: 100%; min-height: 280px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" onclick="closeProjectModal()">
+        <div id="project-modal-content" class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl relative" onclick="event.stopPropagation()">
+            
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition-colors z-20">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="h-64 md:h-80 overflow-hidden relative">
+                <img id="modal-img" src="" class="w-full h-full object-cover" alt="Project Image">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 id="modal-title" class="text-3xl md:text-4xl font-bold font-display leading-tight mb-2"></h3>
+                    <div class="flex flex-wrap gap-2" id="modal-tags">
+                        <!-- Tags injected here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <!-- Description -->
+                <div class="prose prose-lg text-textMuted max-w-none mb-10">
+                    <div id="modal-desc" class="space-y-4 leading-relaxed"></div>
+                </div>
+
+                <!-- Gallery Section -->
+                <div>
+                    <h4 class="font-display text-xl font-bold text-textMain mb-4 flex items-center gap-2">
+                        <i data-lucide="image" class="w-5 h-5 text-gisBlue"></i> Project Gallery
+                    </h4>
+                    <div id="modal-gallery" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <!-- Gallery images injected here -->
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-6 border-t border-gray-100 flex justify-end">
+                    <button onclick="closeProjectModal()" class="px-8 py-3 bg-gisBlue text-white rounded-xl font-bold hover:bg-sky-700 transition-all shadow-lg hover:shadow-xl">
+                        Close Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-white/40 py-8 text-center text-xs text-textMuted mt-auto bg-white/60 backdrop-blur-md">
+        <p>&copy; 2025 Bijaylaxmi Sahoo. All rights reserved.</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <a href="https://www.linkedin.com/in/bijaylaxmi-sahoo-4a82701aa" class="hover:text-gisBlue transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            <a href="https://www.researchgate.net/profile/Bijaylaxmi-Sahoo" class="hover:text-gisGreen transition-colors"><i data-lucide="book-open" class="w-5 h-5"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function navigateTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-view').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0); 
+            }
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.remove('open');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+        }
+
+        // Project Data Storage with Expanded Descriptions and Galleries
+        const projectsData = {
+            'tss': {
+                title: "20-Year Assessment of TSS Variability",
+                img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
+                desc: `<p class="font-semibold text-textMain">Challenge:</p>
+                       <p>Estuarine systems like Barataria Bay are critical buffers against storm surges and vital habitats for diverse marine life. However, they face threats from sediment starvation and rapid land loss. Understanding the long-term patterns of Total Suspended Sediment (TSS) is crucial for restoration, yet in-situ data is often sparse and discontinuous.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Methodology:</p>
+                       <p>This 20-year retrospective study harmonized MODIS Aqua satellite imagery from 2000 to 2020 to establish a robust climatology. We developed a regional bio-optical algorithm that relates remote sensing reflectance ($R_{rs}$) to in-situ TSS measurements, achieving a high coefficient of determination ($R^2 > 0.85$). The analysis rigorously accounted for atmospheric noise and varying optical water types.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Impact:</p>
+                       <p>The research revealed that cold front passages are the primary drivers of sediment resuspension during winter months, significantly outweighing tidal influences. We also quantified the sediment plume dispersion from the Davis Pond Freshwater Diversion, providing quantifiable metrics that state agencies now use to optimize diversion operations for maximum sediment retention and marsh creation.</p>`,
+                tags: ["Ocean Color", "Remote Sensing", "Python/MATLAB", "Coastal Restoration"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1581093458891-7731a13028fc?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=600&auto=format&fit=crop"
+                ]
+            },
+            'lulc': {
+                title: "High-Res LULC Mapping",
+                img: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop",
+                desc: `<p class="font-semibold text-textMain">Challenge:</p>
+                       <p>Bhubaneswar, a rapidly developing tier-2 city in India, has seen explosive urban sprawl. This uncontrolled expansion often encroaches upon agricultural lands and wetlands, creating urban heat islands and disrupting local hydrology. Detailed, long-term spatial data was needed to quantify these changes.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Methodology:</p>
+                       <p>I utilized a multi-temporal stack of Landsat 5 TM, Landsat 7 ETM+, and Landsat 8 OLI imagery spanning two decades. Using a supervised classification approach (Maximum Likelihood Classifier) in ArcGIS, I mapped distinct classes including built-up areas, vegetation, water bodies, and fallow land. Post-classification change detection algorithms were applied to calculate the exact transition rates between classes.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Impact:</p>
+                       <p>The study highlighted a concerning 40% increase in impervious surface area, largely at the expense of peri-urban agricultural zones. The resulting high-resolution maps identified specific "hotspots" of unplanned development, serving as a critical evidentiary tool for municipal planners to enforce zoning regulations and plan green corridors.</p>`,
+                tags: ["ArcGIS", "Urban Planning", "Landsat", "Change Detection"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=600&auto=format&fit=crop"
+                ]
+            },
+            'covid': {
+                title: "COVID-19 SEIR Modeling",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+                desc: `<p class="font-semibold text-textMain">Challenge:</p>
+                       <p>The early stages of the COVID-19 pandemic were marked by uncertainty. Policymakers needed reliable projections of infection spread to allocate healthcare resources effectively and determine the duration of lockdown measures.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Methodology:</p>
+                       <p>We implemented a Susceptible-Exposed-Infectious-Recovered (SEIR) compartmental model, a standard in epidemiological forecasting. The model was tailored to India's specific demographic data and contact patterns. By calibrating the model against daily reported infection rates, we estimated the basic reproduction number ($R_0$) and time-dependent reproduction number ($R_t$).</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Impact:</p>
+                       <p>Our projections accurately predicted the timeline for the first infection peak, providing a 2-week lead time for hospital preparedness. The study quantitatively demonstrated the efficacy of early lockdown measures in flattening the curve, preventing an estimated 30% surge in immediate cases.</p>`,
+                tags: ["MATLAB", "Epidemiology", "Data Modeling", "Predictive Analytics"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1590212151175-e58f9fa4385e?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1584036561566-b93a50208c3c?q=80&w=600&auto=format&fit=crop"
+                ]
+            },
+            'ann': {
+                title: "Wave Data Gap Filling (ANN)",
+                img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=800&auto=format&fit=crop",
+                desc: `<p class="font-semibold text-textMain">Challenge:</p>
+                       <p>Long-term oceanographic datasets are essential for climate studies and coastal engineering. However, data from moored buoys often contain significant gaps due to sensor bio-fouling, power failures, or harsh weather conditions, rendering them unsuitable for continuous time-series analysis.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Methodology:</p>
+                       <p>I developed a feed-forward Artificial Neural Network (ANN) using the Levenberg-Marquardt backpropagation algorithm. The model was trained on historical buoy data to learn the non-linear dependencies between input variables (wind speed, direction, fetch) and significant wave height ($H_s$). We performed rigorous cross-validation to prevent overfitting.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Impact:</p>
+                       <p>The ANN model successfully reconstructed missing wave height data with a correlation coefficient ($R$) exceeding 0.9 and a low Root Mean Square Error (RMSE). This reconstructed dataset provided a continuous 30-year record, enabling more accurate calculations of extreme wave statistics for the design of offshore structures.</p>`,
+                tags: ["AI/ML", "Python", "Neural Networks", "Ocean Engineering"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1501621667575-af81f1f0bacc?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=600&auto=format&fit=crop"
+                ]
+            },
+            'fani': {
+                title: "Cyclone Fani Impact Analysis",
+                img: "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?q=80&w=800&auto=format&fit=crop",
+                desc: `<p class="font-semibold text-textMain">Challenge:</p>
+                       <p>Cyclone Fani (2019) was an extremely severe cyclonic storm that devastated the coast of Odisha. Rapid and accurate assessment of the ecological damage was necessary to guide immediate relief efforts and long-term recovery strategies.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Methodology:</p>
+                       <p>I employed a remote sensing approach using pre- and post-storm Sentinel-2 and Landsat 8 Optical imagery. The core of the analysis involved calculating the Normalized Difference Vegetation Index (NDVI) and performing image differencing. I also utilized Synthetic Aperture Radar (SAR) data to identify flooded regions independent of cloud cover.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Impact:</p>
+                       <p>The analysis quantified a staggering loss of over 30% of the urban green canopy in affected districts and identified thousands of hectares of damaged crop land. These damage assessment maps were generated within days of the event, providing critical situational awareness to local government bodies for prioritizing replanting efforts.</p>`,
+                tags: ["NDVI", "Disaster Mgmt", "Sentinel-2", "Ecological Impact"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1461696114087-397271a7aedc?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1594818379496-da1e345b0ded?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1504355087824-124299874fa5?q=80&w=600&auto=format&fit=crop"
+                ]
+            },
+            'field': {
+                title: "Met. Data Validation",
+                img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
+                desc: `<p class="font-semibold text-textMain">Challenge:</p>
+                       <p>While satellite remote sensing provides global coverage, the data is indirect and prone to atmospheric errors. Ground-truthing is essential to validate these observations and ensure the accuracy of climate models.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Methodology:</p>
+                       <p>This project involved the strategic deployment and maintenance of autonomous meteorological stations across diverse terrains. We collected high-frequency data on temperature, humidity, wind vectors, and solar radiation. This ground-truth data was spatially and temporally collocated with satellite overpasses (MODIS, INSAT) to calculate bias and root mean square error.</p>
+                       
+                       <p class="font-semibold text-textMain mt-4">Impact:</p>
+                       <p>The validation campaigns identified significant systematic biases in satellite-derived land surface temperature products over humid tropical regions. Based on these findings, we developed regional correction factors that improved the accuracy of weather forecasting models by approximately 15%, benefiting local agricultural planning.</p>`,
+                tags: ["Field Work", "Validation", "Instrumentation", "Data Analysis"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1590552544646-991ca81f4405?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=600&auto=format&fit=crop"
+                ]
+            }
+        };
+
+        function showProjectDetails(id) {
+            const data = projectsData[id];
+            if (!data) return;
+
+            // Populate Modal
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-img').src = data.img;
+            document.getElementById('modal-desc').innerHTML = data.desc;
+            
+            // Populate Tags
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = ''; // Clear previous
+            data.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'px-3 py-1 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-lg text-sm font-bold shadow-sm';
+                span.innerText = tag;
+                tagsContainer.appendChild(span);
+            });
+
+            // Populate Gallery
+            const galleryContainer = document.getElementById('modal-gallery');
+            galleryContainer.innerHTML = '';
+            if(data.gallery && data.gallery.length > 0) {
+                data.gallery.forEach(imgUrl => {
+                    const div = document.createElement('div');
+                    div.className = 'h-32 rounded-xl overflow-hidden hover:opacity-90 transition-opacity cursor-pointer shadow-sm';
+                    div.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover" alt="Gallery Image">`;
+                    galleryContainer.appendChild(div);
+                });
+            }
+
+            // Show Modal
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            // Trigger reflow for transition
+            void modal.offsetWidth;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('open');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }, 300);
+        }
+
+        // Initialize Home as active
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!document.querySelector('.page-view.active')) {
+                navigateTo('home');
+            }
+            // Ensure modal is hidden initially
+            document.getElementById('project-modal').classList.add('hidden');
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeProjectModal();
+        });
+    </script>
+</body>
+</html>
